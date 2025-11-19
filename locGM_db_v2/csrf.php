@@ -4,6 +4,11 @@
  * Funções para gerar e validar tokens CSRF
  */
 
+// Garantir que a sessão está ativa
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 /**
  * Gera um token CSRF e o armazena na sessão
  */

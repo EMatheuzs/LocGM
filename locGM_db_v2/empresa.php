@@ -106,7 +106,6 @@ if ($user['role'] !== 'empresa') {
   <section class="card">
     <div class="card-title">Adicionar novo local</div>
     <form method="post" class="grid two">
-    <form method="post" class="grid two">
       <input type="hidden" name="action" value="save_place">
       <?php echo csrf_field(); ?>
       <label>Nome<input name="name" required></label>

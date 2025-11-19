@@ -61,6 +61,14 @@ locGM_db_v2/
 
 ### Passo 1: Preparar o banco de dados
 
+# recomendado para abri o site
+**Via PHP CLI:**
+```bash
+cd /caminho/para/locGM_db_v2
+php -S 127.0.0.1:8000
+# Acesse: http://localhost:8000
+```
+
 **Opção A: Usando CLI MySQL**
 ```bash
 mysql -u root -p -e "CREATE DATABASE IF NOT EXISTS locGM CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
@@ -83,13 +91,6 @@ php import_db.php
 **Via XAMPP (recomendado):**
 1. Coloque a pasta `locGM_db_v2` em `C:\xampp\htdocs\`
 2. Abra `http://localhost/locGM_db_v2/`
-
-**Via PHP CLI:**
-```bash
-cd /caminho/para/locGM_db_v2
-php -S 127.0.0.1:8000
-# Acesse: http://localhost:8000
-```
 
 ---
 

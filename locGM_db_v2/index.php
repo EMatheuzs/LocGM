@@ -1,17 +1,13 @@
 <?php
-require_once __DIR__ . '/data.php';
 require_once __DIR__ . '/csrf.php';
+require_once __DIR__ . '/data.php';
 // tentar carregar DB helper (se falhar, o site seguirá usando sessão)
 @include_once __DIR__ . '/db.php';
 seed_data();
 $error = null;
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  // Validar CSRF token
-  if (!validate_csrf_token($_POST['csrf_token'] ?? '')) {
-    $error = 'Token de segurança inválido. Tente novamente.';
-  } else {
-    $email = trim($_POST['email'] ?? '');
-    $role = $_POST['role'] ?? 'visitante';
+  $email = trim($_POST['email'] ?? '');
+  $role = $_POST['role'] ?? 'visitante';
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
       $error = 'Informe um e-mail válido.';
     } else {
@@ -40,7 +36,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       header('Location: /home.php');
       exit;
     }
-  }
 }
 ?><!DOCTYPE html>
 <html lang="pt-br">
@@ -60,7 +55,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <div class="alert"><?php echo htmlspecialchars($error); ?></div>
     <?php endif; ?>
     <form method="post" class="vstack gap">
-      <?php echo csrf_field(); ?>
       <label class="label">Modo de uso</label>
       <div class="hstack gap">
         <label class="pill"><input type="radio" name="role" value="empresa"> Empresa</label>
